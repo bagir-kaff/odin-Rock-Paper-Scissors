@@ -8,7 +8,14 @@ const result = document.querySelector('.result');
 const hchoices = document.querySelectorAll('.btn');
 const hs = document.querySelector('.human'); //scoring 
 const cs = document.querySelector('.comp'); //scoring
+const reset = document.querySelector('.reset') //reset button
 
+function resetScore(){
+  compScore = 0, humanScore = 0;
+  hs.textContent = 'Human: 0';
+  cs.textContent = 'Computer: 0';
+  result.textContent = 'result';
+}
 
 function win(cc,hc) { //cc = computer choice,hc = human choice choose the winner
   if (cc === 'Rock' && hc === 'Paper' || cc === 'Paper' && hc === 'Scissors' ||cc === 'Scissors' && hc === 'Rock' ){
@@ -34,6 +41,9 @@ function play(){
     }
 }
 
+reset.addEventListener('click',resetScore);
+
 hchoices.forEach(ch => {
   ch.addEventListener('click',play); //put listener on every .btn
 });
+
