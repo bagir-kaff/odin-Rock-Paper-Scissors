@@ -26,6 +26,7 @@
         /* height: 100px; */
         color:white;
         margin:0;
+        width:300px;
     }
     .container{
         display:flex;
@@ -45,32 +46,36 @@
     
     .btn:hover{
         background-color: whitesmoke;
-        box-shadow: 0 0 2rem rgb(255, 255, 255);
+        box-shadow: 0 0 1rem rgb(255, 255, 255);
     }
-    /* .upper{
+    .upper{
         display:flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-    } */
+    }
     .reset{
-        /* font-size: 40px; */
+        font-size: 20px;
+        margin-left:auto;
         /* height: 100px; */
 
     }
 </style>
 <body>
     <div class="outer">
-        <div class="score">
-            <div class="human">Human: 0</div>
-            <div class="comp">Computer: 0</div>
-            <div class="result">Result</div>
-        </div>
-        <div class="container">
-            <button data-choice ="Rock" class="btn">&#9994</button>
-            <button data-choice ="Paper" class="btn">&#128400</button>
-            <button data-choice ="Scissors" class="btn">&#9996</button>
-        </div>
+        <div class="upper">
+            <div class="score">
+                <div class="human">Human: 0</div>
+                <div class="comp">Computer: 0</div>
+                <div class="result">Result</div>
+            </div>
+        <button class="reset">reset</button>
     </div>
+    <div class="container">
+        <button data-choice ="Rock" class="btn">&#9994</button>
+        <button data-choice ="Paper" class="btn">&#128400</button>
+        <button data-choice ="Scissors" class="btn">&#9996</button>
+    </div>
+</div>
 </body>
 
 <script src="external.js"></script>
