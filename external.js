@@ -1,27 +1,16 @@
 const choices = ['Rock','Paper','Scissors'];
 getComputerChoice = () => choices[Math.floor(Math.random()*3 )]; //FUNCTION
-let comp,
-human,
+let comp, //computer choice
+human, //human choice
 compScore = 0,
 humanScore = 0;
 const result = document.querySelector('.result');
-const hs = document.querySelector('.human');
-const cs = document.querySelector('.comp'); 
 const hchoices = document.querySelectorAll('.btn');
+const hs = document.querySelector('.human'); //scoring 
+const cs = document.querySelector('.comp'); //scoring
 
-function play(){
-  if(compScore <5 && humanScore <5){
-  comp = getComputerChoice();
-  human = this.getAttribute('data-choice');
-  win(comp,human);
-  console.log()
-  }
-}
-hchoices.forEach(ch => {
-  ch.addEventListener('click',play);
-});
 
-function win(cc,hc) { //cc = computer choice,hc = human choice
+function win(cc,hc) { //cc = computer choice,hc = human choice choose the winner
   if (cc === 'Rock' && hc === 'Paper' || cc === 'Paper' && hc === 'Scissors' ||cc === 'Scissors' && hc === 'Rock' ){
     hs.textContent = `Human: ${++humanScore}`;
     result.textContent = `You Won This Round, ${hc} beats ${cc}`;
@@ -36,29 +25,15 @@ function win(cc,hc) { //cc = computer choice,hc = human choice
     result.textContent =`something is wrong (testing only)`
 }
 
-function game(){
-    let score = 0;
-    let res;
-        // human = prompt("input your choice");
-        // human = human[0].toUpperCase() + human.slice(1, human.length).toLowerCase()
-        // if ((human === 'Rock' ||human === 'Scissors' ||human === 'Paper' )){break}
-        // alert("wrong input!")
-    // }
-        res = play(getComputerChoice(),human)
-        score += res;
-        if(res === 1) console.log(`You Won This Round, ${human} beats ${comp}`)
-        else if (res === 0) console.log(`Its A Tie, ${comp} ties with ${human}`)
-        else if (res === -1) console.log(`You Lose This Round, ${comp} beats ${human}`)
-    
-    if (score>0){
-        // alert( "Yes You won! Againts Randomness")
+function play(){
+  if(compScore <5 && humanScore <5){//stop after computer/human win
+    comp = getComputerChoice();
+    human = this.getAttribute('data-choice');
+    win(comp,human);//compare the choices
+    // console.log()
     }
-    else if (score === 0){
-        // alert( "you tied with randomness")
-    }
-    else{
-    // alert( "you Lose againts randomness")
-    }
-  }
+}
 
-// game()
+hchoices.forEach(ch => {
+  ch.addEventListener('click',play); //put listener on every .btn
+});
